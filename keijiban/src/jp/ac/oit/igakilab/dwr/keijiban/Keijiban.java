@@ -33,11 +33,14 @@ public class Keijiban {
 	 * @param post 送信者とメッセージのデータ(PostForm, timeは指定しなくてよい)
 	 * @return　投稿に成功した時true
 	 */
-	public boolean postMessage(PostForm post){
-		//TODO: 投稿登録メソッドの実装
+	 public boolean postMessage(PostForm post){
+	        KeijibanDB db = new KeijibanDB();
 
-		return true;
-	}
+	        db.postMessage(post.getName(), post.getRoom(), post.getMessage());
+
+	        db.closeClient();
+	        return true;
+	    }
 
 	/**
 	 * 現在ある部屋（スレッド）のリストを取得します
