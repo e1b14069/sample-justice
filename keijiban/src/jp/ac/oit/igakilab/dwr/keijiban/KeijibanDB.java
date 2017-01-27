@@ -79,4 +79,6 @@ public class KeijibanDB {
 	public void closeClient(){
 		client.close();
 	}
+	
+	
 }
