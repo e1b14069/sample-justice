@@ -6,6 +6,8 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Sorts;
 
 /**
  * DBにアクセスするためのクラスです
@@ -44,10 +46,10 @@ public class KeijibanDB {
 	 * @return DBカーソル
 	 */
 	public FindIterable<Document> getMessages(String room){
-		//TODO: DBから投稿カーソル取得機能を実装
-
-		return null;
-	}
+        return getCollection()
+            .find(Filters.eq("room", room))
+            .sort(Sorts.ascending("time"));
+    }
 
 	/**
 	 * メッセージを新しく投稿します
@@ -77,4 +79,6 @@ public class KeijibanDB {
 	public void closeClient(){
 		client.close();
 	}
+	
+	
 }
