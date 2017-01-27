@@ -14,4 +14,12 @@ function loadMessages(room){
 
 $(document.ready(function(){
     loadMessages("test");
+
+    $(".less").on('click', function(){
+        var input = $("#toukou").serializeJson();
+
+        Keijiban.postMessage(input, function(reply){
+            loadMessages(input.room);
+        });
+    });
 });
